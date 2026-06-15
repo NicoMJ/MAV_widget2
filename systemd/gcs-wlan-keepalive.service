@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep wlan0 client up while GCS AP runs (concurrent STA+AP)
+ConditionPathExists=!/var/lib/gcs-ap/manual-off
+
+[Service]
+Type=oneshot
+TimeoutStartSec=50
+ExecStart=/usr/local/bin/wlan-concurrent-keepalive.sh
+
+[Install]
+WantedBy=multi-user.target
